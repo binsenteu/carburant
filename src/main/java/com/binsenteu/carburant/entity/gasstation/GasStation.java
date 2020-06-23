@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-//@Entity
+@Entity
 @Table(name = "gas_station")
 @SequenceGenerator(name = "seqGasStation", sequenceName = "seq_gas_station", initialValue = 100, allocationSize = 1)
 public class GasStation {
@@ -36,9 +36,9 @@ public class GasStation {
 	private Localisation localisation;
 	@Column(name = "automate")
 	private Boolean automate247;
-	@OneToMany(mappedBy = "id_hours")
+	@OneToMany(mappedBy = "gasStation")
 	private Set<Hours> hours;
-	@OneToMany(mappedBy = "id_fuel")
+	@OneToMany(mappedBy = "gasStation")
 	private Set<Fuel> fuel;
 	@Version
 	private int version;

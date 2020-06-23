@@ -20,7 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-//@Entity
+@Entity
 @Table(name = "fuel")
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 4)
 @SequenceGenerator(name = "seqFuel", sequenceName = "seq_fuel", initialValue = 100, allocationSize = 1)

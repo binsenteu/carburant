@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-//@Entity
+@Entity
 @Table(name = "gas_station_hours")
 @SequenceGenerator(name = "seqHours", sequenceName = "seq_hours", initialValue = 50, allocationSize = 1)
 public class Hours {
