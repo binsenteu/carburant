@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.binsenteu.carburant.entity.members.Member;
 
-public interface MemberRepository extends JpaRepository<Member, Integer>{
+public interface MemberRepository extends JpaRepository<Member, String>{
 	
 	public Optional<Member> findByUsername(String username);
 

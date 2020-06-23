@@ -6,18 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-@Entity
+//@Entity
 @Table(name = "fuel")
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 4)
 @SequenceGenerator(name = "seqFuel", sequenceName = "seq_fuel", initialValue = 100, allocationSize = 1)
@@ -27,7 +30,10 @@ public abstract class Fuel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFuel")
 	@Column(name = "id_fuel")
-	private Integer id;
+	private Integer id_fuel;
+	@ManyToOne
+	@JoinColumn(name = "id_gas_station", foreignKey = @ForeignKey(name = "gas_station_fuel_fk"))
+	private GasStation gasStation;
 	@Column(name = "available_fuel")
 	private Boolean available;
 	@Column(name = "price_fuel")
@@ -42,11 +48,11 @@ public abstract class Fuel {
 	}
 
 	public Integer getId() {
-		return id;
+		return id_fuel;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id_fuel = id;
 	}
 
 	public Boolean getAvailable() {
@@ -85,7 +91,7 @@ public abstract class Fuel {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((id_fuel == null) ? 0 : id_fuel.hashCode());
 		return result;
 	}
 
@@ -98,12 +104,14 @@ public abstract class Fuel {
 		if (getClass() != obj.getClass())
 			return false;
 		Fuel other = (Fuel) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (id_fuel == null) {
+			if (other.id_fuel != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!id_fuel.equals(other.id_fuel))
 			return false;
 		return true;
 	}
+
+
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-@Entity
+//@Entity
 @Table(name = "gas_station")
 @SequenceGenerator(name = "seqGasStation", sequenceName = "seq_gas_station", initialValue = 100, allocationSize = 1)
 public class GasStation {
@@ -36,9 +36,9 @@ public class GasStation {
 	private Localisation localisation;
 	@Column(name = "automate")
 	private Boolean automate247;
-	//TODO - change hours to set
-	private Hours hours;
-	@OneToMany(mappedBy = "id.fuel")
+	@OneToMany(mappedBy = "id_hours")
+	private Set<Hours> hours;
+	@OneToMany(mappedBy = "id_fuel")
 	private Set<Fuel> fuel;
 	@Version
 	private int version;
@@ -70,12 +70,28 @@ public class GasStation {
 		this.automate247 = automate247;
 	}
 
-	public Hours getHours() {
+	public Set<Hours> getHours() {
 		return hours;
 	}
 
-	public void setHours(Hours hours) {
+	public void setHours(Set<Hours> hours) {
 		this.hours = hours;
+	}
+
+	public Set<Fuel> getFuel() {
+		return fuel;
+	}
+
+	public void setFuel(Set<Fuel> fuel) {
+		this.fuel = fuel;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

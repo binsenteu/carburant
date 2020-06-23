@@ -4,17 +4,28 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name = "gas_station_hours")
+@SequenceGenerator(name = "seqHours", sequenceName = "seq_hours", initialValue = 50, allocationSize = 1)
 public class Hours {
-	@EmbeddedId
-	private HoursPK id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqHours")
+	private Integer id_hours;
+	@ManyToOne
+	@JoinColumn(name = "id_gas_station", foreignKey = @ForeignKey(name = "gas_station_hours_fk"))
+	private GasStation gasStation;
 	@Column(name = "day")
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
@@ -30,6 +41,24 @@ public class Hours {
 	}
 
 	public Hours() {
+	}
+	
+	
+
+	public Integer getId_hours() {
+		return id_hours;
+	}
+
+	public void setId_hours(Integer id_hours) {
+		this.id_hours = id_hours;
+	}
+
+	public GasStation getGasStation() {
+		return gasStation;
+	}
+
+	public void setGasStation(GasStation gasStation) {
+		this.gasStation = gasStation;
 	}
 
 	public DayOfWeek getDay() {
@@ -60,9 +89,7 @@ public class Hours {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((closing == null) ? 0 : closing.hashCode());
-		result = prime * result + ((day == null) ? 0 : day.hashCode());
-		result = prime * result + ((opening == null) ? 0 : opening.hashCode());
+		result = prime * result + ((id_hours == null) ? 0 : id_hours.hashCode());
 		return result;
 	}
 
@@ -75,20 +102,15 @@ public class Hours {
 		if (getClass() != obj.getClass())
 			return false;
 		Hours other = (Hours) obj;
-		if (closing == null) {
-			if (other.closing != null)
+		if (id_hours == null) {
+			if (other.id_hours != null)
 				return false;
-		} else if (!closing.equals(other.closing))
-			return false;
-		if (day != other.day)
-			return false;
-		if (opening == null) {
-			if (other.opening != null)
-				return false;
-		} else if (!opening.equals(other.opening))
+		} else if (!id_hours.equals(other.id_hours))
 			return false;
 		return true;
 	}
+
+
 	
 	
 	

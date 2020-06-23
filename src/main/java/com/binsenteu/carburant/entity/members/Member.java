@@ -18,11 +18,11 @@ public class Member {
 	private String username;
 	@Column(name = "password_member")
 	private String password;
-	@OneToMany(mappedBy = "id.car")
+	@OneToMany(mappedBy = "member")
 	private Set<Car> cars;
 	@Column(name="enable")
 	private Boolean enabled;
-	@OneToMany(mappedBy="login")
+	@OneToMany(mappedBy="member")
 	private Set<MemberRole> roles;
 	@Version
 	private int version;

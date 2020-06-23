@@ -2,12 +2,17 @@ package com.binsenteu.carburant.entity.members;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+
+import com.binsenteu.carburant.entity.gasstation.GasStation;
 
 @Entity
 @Table(name = "car")
@@ -19,6 +24,9 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCar")
 	@Column(name = "id_car")
 	private Integer id;
+	@ManyToOne
+	@JoinColumn(name = "username_member", foreignKey = @ForeignKey(name = "member_car_fk"))
+	private Member member;
 	@Column(name = "make_car")
 	private String make;
 	@Column(name = "model_car")
@@ -70,6 +78,16 @@ public class Car {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
 	@Override
