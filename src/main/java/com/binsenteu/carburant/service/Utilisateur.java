@@ -8,8 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.binsenteu.carburant.entity.members.Member;
-import com.binsenteu.carburant.entity.members.MemberRole;
+import com.binsenteu.carburant.model.members.Member;
+import com.binsenteu.carburant.model.members.MemberRole;
 
 public class Utilisateur implements UserDetails {
 

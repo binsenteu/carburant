@@ -1,4 +1,4 @@
-package com.binsenteu.carburant.entity.members;
+package com.binsenteu.carburant.model.members;
 
 import java.util.Set;
 

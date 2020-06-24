@@ -1,4 +1,4 @@
-package com.binsenteu.carburant.entity.members;
+package com.binsenteu.carburant.model.members;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import com.binsenteu.carburant.entity.gasstation.GasStation;
+import com.binsenteu.carburant.model.gasstation.GasStation;
 
 @Entity
 @Table(name = "car")

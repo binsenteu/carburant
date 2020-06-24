@@ -1,4 +1,4 @@
-package com.binsenteu.carburant.entity.gasstation;
+package com.binsenteu.carburant.model.gasstation;
 
 import java.util.Date;
 
@@ -22,7 +22,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "fuel")
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 4)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 6)
 @SequenceGenerator(name = "seqFuel", sequenceName = "seq_fuel", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Fuel {

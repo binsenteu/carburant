@@ -1,4 +1,4 @@
-package com.binsenteu.carburant.entity.gasstation;
+package com.binsenteu.carburant.model.gasstation;
 
 import java.util.Set;
 

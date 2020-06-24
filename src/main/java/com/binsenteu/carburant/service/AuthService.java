@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.binsenteu.carburant.entity.members.Member;
+import com.binsenteu.carburant.model.members.Member;
 import com.binsenteu.carburant.repository.MemberRepository;
 
 @Service
