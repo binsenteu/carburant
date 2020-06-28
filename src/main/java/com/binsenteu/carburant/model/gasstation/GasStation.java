@@ -45,7 +45,7 @@ public class GasStation {
 	@JsonView(value = {Views.GasStationView.class})
 	@OneToMany(mappedBy = "gasStation")
 	private Set<Hours> hours;
-	//@JsonView(value = {Views.GasStationView.class})
+	@JsonView(value = {Views.GasStationView.class})
 	@OneToMany(mappedBy = "gasStation")
 	private Set<Fuel> fuel;
 	@JsonView(value = {Views.GasStationView.class})

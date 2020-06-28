@@ -1,5 +1,10 @@
 package com.binsenteu.carburant.model.gasstation;
 
-public class Gazole {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Gazole")
+public class Gazole extends Fuel{
 
 }

@@ -22,9 +22,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
+
 @Entity
 @Table(name = "fuel")
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 6)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+	@Type(value=E10.class, name="E10"),
+	@Type(value=E85.class, name="E85"),
+	@Type(value=GPLc.class, name="GPLc"),
+	@Type(value=Gazole.class, name="Gazole"),
+	@Type(value=SP95.class, name="SP95"),
+	@Type(value=SP98.class, name="SP98")
+})
 @SequenceGenerator(name = "seqFuel", sequenceName = "seq_fuel", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Fuel {
