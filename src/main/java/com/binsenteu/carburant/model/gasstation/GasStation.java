@@ -15,15 +15,20 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.binsenteu.carburant.views.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "gas_station")
 @SequenceGenerator(name = "seqGasStation", sequenceName = "seq_gas_station", initialValue = 100, allocationSize = 1)
 public class GasStation {
 	
+	@JsonView(value = {Views.GasStationView.class})
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGasStation")
 	@Column(name = "id_gas_station")
 	private Integer id;
+	@JsonView(value = {Views.GasStationView.class})
 	@Embedded
 	@AttributeOverrides({
 		@AttributeOverride(name = "adresse", column = @Column(name = "address_gas_station", length = 200)),
@@ -34,12 +39,16 @@ public class GasStation {
 		@AttributeOverride(name = "latitude", column = @Column(name = "latitude_gas_station"))
 	})
 	private Localisation localisation;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "automate")
 	private Boolean automate247;
+	@JsonView(value = {Views.GasStationView.class})
 	@OneToMany(mappedBy = "gasStation")
 	private Set<Hours> hours;
+	//@JsonView(value = {Views.GasStationView.class})
 	@OneToMany(mappedBy = "gasStation")
 	private Set<Fuel> fuel;
+	@JsonView(value = {Views.GasStationView.class})
 	@Version
 	private int version;
 

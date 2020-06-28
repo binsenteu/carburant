@@ -3,10 +3,12 @@ package com.binsenteu.carburant.model.gasstation;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

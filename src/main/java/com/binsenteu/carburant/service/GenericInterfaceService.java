@@ -16,10 +16,12 @@ public interface GenericInterfaceService<T, I> {
     @Transactional
     List<T> findAll();
 
+    Optional<T> findById(I id);
+    
     void delete(T t);
 
     void deleteById(I id);
 
-    Optional<T> findById(I id);
+    
 
 }
