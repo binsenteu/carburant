@@ -22,8 +22,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.binsenteu.carburant.views.Views;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 
@@ -42,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 @SequenceGenerator(name = "seqFuel", sequenceName = "seq_fuel", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Fuel {
-
+	@JsonView(value = {Views.GasStationView.class})
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFuel")
 	@Column(name = "id_fuel")
@@ -50,13 +52,17 @@ public abstract class Fuel {
 	@ManyToOne
 	@JoinColumn(name = "id_gas_station", foreignKey = @ForeignKey(name = "gas_station_fuel_fk"))
 	private GasStation gasStation;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "available_fuel")
 	private Boolean available;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "price_fuel")
 	private Double price;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "date_fuel")
 	@Temporal(TemporalType.DATE)
 	private Date lastUpdate;
+	@JsonView(value = {Views.GasStationView.class})
 	@Version
 	private int version;
 

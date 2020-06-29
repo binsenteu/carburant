@@ -18,21 +18,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.binsenteu.carburant.views.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "gas_station_hours")
 @SequenceGenerator(name = "seqHours", sequenceName = "seq_hours", initialValue = 50, allocationSize = 1)
 public class Hours {
+	@JsonView(value = {Views.GasStationView.class})
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqHours")
 	private Integer id_hours;
 	@ManyToOne
 	@JoinColumn(name = "id_gas_station", foreignKey = @ForeignKey(name = "gas_station_hours_fk"))
 	private GasStation gasStation;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "day")
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "opening")
 	private LocalTime opening;
+	@JsonView(value = {Views.GasStationView.class})
 	@Column(name = "closing")
 	private LocalTime closing;
 	

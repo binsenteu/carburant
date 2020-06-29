@@ -2,14 +2,22 @@ package com.binsenteu.carburant.model.gasstation;
 
 import javax.persistence.Embeddable;
 
+import com.binsenteu.carburant.views.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class Localisation {
-
+	@JsonView(value = {Views.GasStationView.class})
 	private String adresse;
+	@JsonView(value = {Views.GasStationView.class})
 	private String codePostal;
+	@JsonView(value = {Views.GasStationView.class})
 	private String ville;
+	@JsonView(value = {Views.GasStationView.class})
 	private String pop;
+	@JsonView(value = {Views.GasStationView.class})
 	private Double longitude;
+	@JsonView(value = {Views.GasStationView.class})
 	private Double latitude;
 
 	public Localisation() {
