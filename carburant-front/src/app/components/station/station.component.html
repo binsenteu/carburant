@@ -1,7 +1,18 @@
 <p>station works!</p>
 
-<h2>{{station.id}}</h2>
-<h2>{{station.localisation.adresse}}</h2>
-<h2>{{station.localisation.codePostal}}</h2>
-<h2>{{station.localisation.ville}}</h2>
+<h6>{{station.id}}</h6>
+<h6>{{station.localisation.adresse}}</h6>
+<h6>{{station.localisation.codePostal}}</h6>
+<h6>{{station.localisation.ville}}</h6>
+
+<div *ngFor="let fuel of station.fuel">
+  <h6>id : {{fuel.id}}</h6>
+  <h6>type : {{fuel.type}}</h6>
+  <h6>available : {{fuel.available}}</h6>
+  <h6>price : {{fuel.price/1000}}</h6>
+  <h6>last update : {{fuel.lastUpdate}}</h6>
+  <br>
+</div>
+
+<button type="button" class="btn btn-outline-info">Hello</button>
 
