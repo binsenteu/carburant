@@ -1,9 +1,37 @@
 <p>station works!</p>
 
-<h6>{{station.id}}</h6>
-<h6>{{station.localisation.adresse}}</h6>
-<h6>{{station.localisation.codePostal}}</h6>
-<h6>{{station.localisation.ville}}</h6>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Code Postal</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Gazole</th>
+      <th scope="col">E10</th>
+      <th scope="col">SP95</th>
+      <th scope="col">SP98</th>
+      <th scope="col">E85</th>
+      <th scope="col">GPLc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{station.id}}</td>
+      <td>{{station.localisation.adresse}}</td>
+      <td>{{station.localisation.codePostal}}</td>
+      <td>{{station.localisation.ville}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <div *ngFor="let fuel of station.fuel">
   <h6>id : {{fuel.id}}</h6>
@@ -12,6 +40,7 @@
   <h6>price : {{fuel.price/1000}}</h6>
   <h6>last update : {{fuel.lastUpdate}}</h6>
   <br>
+
 </div>
 
 <button type="button" class="btn btn-outline-info">Hello</button>
