@@ -17,7 +17,7 @@ public class GasStationServiceImpl implements GasStationService {
 	
 	@Override 
 	public GasStation insert(GasStation t) {
-		return gasStationRepository.save(t);
+		return (GasStation) gasStationRepository.save(t);
 	}
 
 	@Override
@@ -44,6 +44,11 @@ public class GasStationServiceImpl implements GasStationService {
 	public Optional<GasStation> findById(Integer id) {
 		return gasStationRepository.findById(id);
 	}
+	
+	@Override
+	public List<GasStation> findByLocalisationCodePostal(String zip) {
+		return gasStationRepository.findByLocalisationCodePostal(zip);
+	}
 
 	@Override
 	public void delete(GasStation t) {
@@ -61,6 +66,5 @@ public class GasStationServiceImpl implements GasStationService {
 		}
 	}
 
-	
 
 }

@@ -18,5 +18,8 @@ export class StationService {
     return this.httpClient.get<GasStation>(`${this.URL}/gas_station/${id}`);
   }
 
+  public findByZip(zip: string): Observable<Array<GasStation>> {
+    return this.httpClient.get<Array<GasStation>>(`${this.URL}/gas_station/zip/${zip}`);
+  }
 
 }

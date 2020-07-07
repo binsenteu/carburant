@@ -1,0 +1,57 @@
+<p>liste-station works!</p>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">ID</th>
+        <th scope="col" class="text-center">Adresse</th>
+        <th scope="col" class="text-center">Code Postal</th>
+        <th scope="col" class="text-center">Ville</th>
+        <th scope="col" class="text-center">Gazole</th>
+        <th scope="col" class="text-center">E10</th>
+        <th scope="col" class="text-center">SP95</th>
+        <th scope="col" class="text-center">SP98</th>
+        <th scope="col" class="text-center">E85</th>
+        <th scope="col" class="text-center">GPLc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let station of stations">
+        <td class="text-center">{{station.id}}</td>
+        <td class="text-center">{{station.localisation.adresse}}</td>
+        <td class="text-center">{{station.localisation.codePostal}}</td>
+        <td class="text-center">{{station.localisation.ville}}</td>
+        <td class="text-center">
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'Gazole'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'E10'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'SP95'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'SP98'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'E85'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let fuel of station.fuel">
+            <div class="text-center" *ngIf="fuel.type == 'GPLc'">{{fuel.price/1000}}<br>{{fuel.lastUpdate}}</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

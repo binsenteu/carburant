@@ -1,0 +1,21 @@
+<h1 class="text-center">Recherche code postal</h1>
+<div class="container">
+  <form (ngSubmit)="rechercher()">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Code postal : </label>
+      <input [(ngModel)]="zipCode" name="zipCode" class="form-control" id="exampleFormControlInput1"
+        placeholder="Rechercher">
+    </div>
+    <div>
+      <button class="btn btn-success" type="submit">Rechercher</button>
+    </div>
+  </form>
+
+  <h6>{{zipCode}}</h6>
+
+  <div *ngIf="stations.length == 0">
+    <h4>Pas de station service pour ce code postal</h4>
+  </div>
+
+  <app-liste-station [_stations]="stations"></app-liste-station>
+</div>

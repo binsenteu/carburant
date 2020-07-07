@@ -1,5 +1,6 @@
 package com.binsenteu.carburant.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class GasStationRestController {
 	public ResponseEntity<String> hello(){
 		String hello = "hello";
 		return new ResponseEntity<String>(hello, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "zip/{zip}")
+	public ResponseEntity<List<GasStation>> findByCodePostal(@PathVariable("zip") String zip) {
+		return new ResponseEntity<List<GasStation>>(gasStationService.findByLocalisationCodePostal(zip), HttpStatus.OK);
 	}
 	
 	

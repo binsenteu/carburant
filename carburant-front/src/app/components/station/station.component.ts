@@ -11,7 +11,8 @@ import { StationService } from 'src/app/services/station.service';
 })
 export class StationComponent implements OnInit {
 
-  private _station: GasStation;
+  private _listeStation: GasStation[] = [];
+
   private _erreur: boolean = false;
   private _id: number;
 
@@ -33,17 +34,10 @@ export class StationComponent implements OnInit {
       if (params.id) {
         this.id = params.id;
         this.stationService.findById(this.id).subscribe((data) => {
-          this.station = data;
+          this.listeStation.push(data);
         })
       }
     })
-  }
-
-  public get station(): GasStation {
-    return this._station;
-  }
-  public set station(value: GasStation) {
-    this._station = value;
   }
 
   public get erreur(): boolean {
@@ -58,6 +52,12 @@ export class StationComponent implements OnInit {
   }
   public set id(value: number) {
     this._id = value;
+  }
+  public get listeStation(): GasStation[] {
+    return this._listeStation;
+  }
+  public set listeStation(value: GasStation[]) {
+    this._listeStation = value;
   }
 
 }
