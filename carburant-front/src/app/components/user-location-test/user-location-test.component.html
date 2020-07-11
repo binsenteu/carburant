@@ -1,3 +1,18 @@
 <p>user-location-test works!</p>
 longitude : {{longitude}} <br>
 latitude : {{latitude}}
+
+<h1 class="text-center">Recherche par distance</h1>
+<div class="container">
+  <form (ngSubmit)="rechercher()">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Distance maximum (km) : </label>
+      <input [(ngModel)]="distance" name="distance" class="form-control" id="exampleFormControlInput1"
+        placeholder="Rechercher">
+    </div>
+    <div>
+      <button class="btn btn-success" type="submit">Rechercher</button>
+    </div>
+  </form>
+
+<app-liste-station [_stations]="stations"></app-liste-station>

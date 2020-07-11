@@ -49,6 +49,11 @@ public class GasStationServiceImpl implements GasStationService {
 	public List<GasStation> findByLocalisationCodePostal(String zip) {
 		return gasStationRepository.findByLocalisationCodePostal(zip);
 	}
+	
+	@Override
+	public List<GasStation> findByLocalisationAndDistance(Double latitude, Double longitude, Double distance) {
+		return gasStationRepository.findByLocalisationAndDistance(latitude, longitude, distance);
+	}
 
 	@Override
 	public void delete(GasStation t) {
@@ -65,6 +70,8 @@ public class GasStationServiceImpl implements GasStationService {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	
 
 
 }

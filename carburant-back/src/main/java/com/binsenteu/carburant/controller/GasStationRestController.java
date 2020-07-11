@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.binsenteu.carburant.model.gasstation.GasStation;
@@ -45,7 +46,14 @@ public class GasStationRestController {
 		return new ResponseEntity<List<GasStation>>(gasStationService.findByLocalisationCodePostal(zip), HttpStatus.OK);
 	}
 	
-	
+	@GetMapping(value = "/distance")
+	public ResponseEntity<List<GasStation>> findByLocalisationAndDistance(
+			@RequestParam(name = "latitude") Double latitude,
+			@RequestParam(name = "longitude") Double longitude,
+			@RequestParam(name = "distance") Double distance) {
+		System.out.println("latitude : --------------------------------------" + latitude);
+		return new ResponseEntity<List<GasStation>>(gasStationService.findByLocalisationAndDistance(latitude, longitude, distance), HttpStatus.OK);
+	}
 	
 	
 
