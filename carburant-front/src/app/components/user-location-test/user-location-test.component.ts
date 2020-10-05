@@ -12,7 +12,7 @@ export class UserLocationTestComponent implements OnInit {
   private _longitude: any;
   private _latitude: any;
   private _stations: GasStation[] = [];
-  private _distance: number = 50;
+  private _distance: number = 5;
 
 
   constructor(

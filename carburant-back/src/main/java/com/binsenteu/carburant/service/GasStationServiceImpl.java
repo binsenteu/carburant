@@ -52,7 +52,10 @@ public class GasStationServiceImpl implements GasStationService {
 	
 	@Override
 	public List<GasStation> findByLocalisationAndDistance(Double latitude, Double longitude, Double distance) {
-		return gasStationRepository.findByLocalisationAndDistance(latitude, longitude, distance);
+		List<GasStation> result = gasStationRepository.findByLocalisationAndDistance(latitude, longitude, distance);
+		//remove station from result list if no fuel price for that station
+		result.removeIf(element -> element.getFuel().isEmpty());
+		return result;
 	}
 
 	@Override

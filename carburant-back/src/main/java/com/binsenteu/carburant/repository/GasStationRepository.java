@@ -31,6 +31,12 @@ public interface GasStationRepository extends JpaRepository<GasStation, Integer>
 			"cos((g.localisation.latitude/100000*pi()/180)) * cos(((:longitude - g.localisation.longitude/100000)*pi()/180))))*180/pi())*60*1.1515*1.609344) <= :distance")
 	List<GasStation> findByLocalisationAndDistance(Double latitude, Double longitude, Double distance);
 	
-
+	
+	//use bounding box only
+//	@Query("SELECT g FROM GasStation g " + 
+//			"WHERE "
+//			+ "g.localisation.latitude/100000 BETWEEN (:latitude-:distance/6371) AND (:latitude+:distance/6371) AND "
+//			+ "g.localisation.longitude/100000 BETWEEN (:longitude-asin(:distance/6371)/cos(:latitude/100000)) AND (:longitude+asin(:distance/6371)/cos(:latitude/100000))")
+//	List<GasStation> findByLocalisationAndDistance(Double latitude, Double longitude, Double distance);
 	
 }

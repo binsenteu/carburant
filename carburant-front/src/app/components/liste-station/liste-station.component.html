@@ -5,14 +5,14 @@
       <tr>
         <th scope="col" class="text-center">ID</th>
         <th scope="col" class="text-center">Adresse</th>
-        <th scope="col" class="text-center">Code Postal</th>
+        <th scope="col" class="text-center" (click)="sort('codePostal')">Code Postal</th>
         <th scope="col" class="text-center">Ville</th>
-        <th scope="col" class="text-center">Gazole</th>
-        <th scope="col" class="text-center">E10</th>
-        <th scope="col" class="text-center">SP95</th>
-        <th scope="col" class="text-center">SP98</th>
-        <th scope="col" class="text-center">E85</th>
-        <th scope="col" class="text-center">GPLc</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'Gazole')">Gazole</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'E10')">E10</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'SP95')">SP95</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'SP98')">SP98</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'E85')">E85</th>
+        <th scope="col" class="text-center" (click)="sortFuel('fuel', 'GPLc')">GPLc</th>
       </tr>
     </thead>
     <tbody>
