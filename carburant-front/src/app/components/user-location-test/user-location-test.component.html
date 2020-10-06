@@ -1,17 +1,27 @@
 <p>user-location-test works!</p>
 longitude : {{longitude}} <br>
-latitude : {{latitude}}
+latitude : {{latitude}} <br>
+search adresse : {{searchAddress}} <br>
+found adresse : {{foundAddress}}
 
 <h1 class="text-center">Recherche par distance</h1>
 <div class="container">
+
   <form (ngSubmit)="rechercher()">
     <div class="form-group">
+      <label for="searchAddress">Adresse : </label>
+      <input class="form-control" [(ngModel)]="searchAddress" name="searchAddress" class="form-control" id="searchAddress"
+      placeholder="Rechercher">
+      <div>
+        <button class="btn btn-outline-primary m-1" type='button' (click)="getLocationFromAddress()">Trouver l'adresse</button>
+     </div>
       <label for="exampleFormControlInput1">Distance maximum (km) : </label>
       <input [(ngModel)]="distance" name="distance" class="form-control" id="exampleFormControlInput1"
         placeholder="Rechercher">
     </div>
     <div>
-      <button class="btn btn-success" type="submit">Rechercher</button>
+      <button class="btn btn-outline-primary m-1" type='button' (click)="getLocationFromBrowser()">Localisez-moi</button>
+      <button class="btn btn-outline-success m-1" type="submit">Rechercher</button>
     </div>
   </form>
 

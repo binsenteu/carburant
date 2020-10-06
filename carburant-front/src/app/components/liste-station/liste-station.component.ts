@@ -61,7 +61,7 @@ export class ListeStationComponent implements OnInit {
   }
 
   public getValue(obj, path, fuelType) {
-    let price = 0
+    let price = 0;
     if (this.order == "asc"){
       price = 0;
     } else {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { GasStation } from 'src/app/model/gas-station.model';
+import { GeocodingService } from 'src/app/services/geocoding.service';
 import { StationService } from 'src/app/services/station.service';
 
 @Component({
@@ -13,17 +15,22 @@ export class UserLocationTestComponent implements OnInit {
   private _latitude: any;
   private _stations: GasStation[] = [];
   private _distance: number = 5;
+  private _searchAddress: String;
+  private _foundAddress: String;
 
 
   constructor(
-    private stationService: StationService) { }
+    private stationService: StationService, private geocodingService: GeocodingService) { }
 
   ngOnInit(): void {
-    this.getLocation();
+    // this.getLocationFromBrowser();
   }
 
+  public getLocationFromAddress(): void{
+    this.geocodingService.findLocalisation("hello");
+  }
 
-  getLocation(): void{
+  public getLocationFromBrowser(): void{
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
           this.longitude = position.coords.longitude;
@@ -69,5 +76,17 @@ export class UserLocationTestComponent implements OnInit {
   }
   public set distance(value: number) {
     this._distance = value;
+  }
+  public get searchAddress(): String {
+    return this._searchAddress;
+  }
+  public set searchAddress(value: String) {
+    this._searchAddress = value;
+  }
+  public get foundAddress(): String {
+    return this._foundAddress;
+  }
+  public set foundAddress(value: String) {
+    this._foundAddress = value;
   }
 }
